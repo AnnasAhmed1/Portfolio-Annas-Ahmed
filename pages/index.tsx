@@ -115,7 +115,7 @@ export default function Home() {
         <div className="w-[calc(100%-250px)] ml-auto">
           <section
             className={`flex-[8] /
-            bg-[url('../assets/home_backgorund.jpeg')]
+            bg-[url(../assets/home_backgorund.jpeg)]
             bg-cover
             bg-no-repeat
             w-full
@@ -124,7 +124,7 @@ export default function Home() {
           >
             <div className="bg-[#252729] flex flex-col gap-8 justify-center items-center text-customLight bg-opacity-60 w-full h-screen">
               <h1 className="text-3xl font-[500]">Welcome</h1>
-              <h1 className="text-5xl font-bold">I'm Annas Ahmed.</h1>
+              <h1 className="text-5xl font-bold">I&apos;m Annas Ahmed.</h1>
               <h1 className="text-2xl">from Karachi, Pakistan</h1>
               <ButtonComp text="Hire Me" transparent={true} />
             </div>
@@ -134,8 +134,9 @@ export default function Home() {
             <div className="flex gap-12">
               <div>
                 <h1 className="text-3xl font-[600]">
-                  I'm <span className="text-customPrimary">Simone Olivia,</span>{" "}
-                  a Web Developer
+                  I&apos;m{" "}
+                  <span className="text-customPrimary">Simone Olivia,</span> a
+                  Web Developer
                 </h1>
                 <p>
                   I help you build brand for your business at an affordable
@@ -145,10 +146,10 @@ export default function Home() {
                   book.
                 </p>
                 <p>
-                  Delivering work within time and budget which meets client’s
-                  requirements is our moto. Lorem Ipsum has been the industry's
-                  standard dummy text ever when an unknown printer took a
-                  galley.
+                  Delivering work within time and budget which meets
+                  client&apos;s requirements is our moto. Lorem Ipsum has been
+                  the industrys standard dummy text ever when an unknown printer
+                  took a galley.
                 </p>
               </div>
               <div>
@@ -209,6 +210,7 @@ export default function Home() {
                 {skills?.map((skill, index) => {
                   return (
                     <SkillComp
+                      key={index}
                       title={skill.title}
                       percentage={skill?.percentage?.toString()}
                     />
