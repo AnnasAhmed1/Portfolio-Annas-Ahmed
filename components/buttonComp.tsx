@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSXElementConstructor } from "react";
 // interface ButtonProps {
 //   text: string;
 //   // Add more props here if needed
@@ -7,29 +7,31 @@ import React from "react";
 const ButtonComp = ({
   text = "",
   transparent = false,
+  center = false,
+  color = "customPrimary",
+  icon = <div />,
   onClick = () => {},
   className = "",
 }) => {
   return (
     <button
+      onClick={onClick}
       className={`
-      ${
-        !transparent
-          ? "bg-customPrimary text-customLight"
-          : "text-customPrimary"
-      }
+      ${!transparent ? `bg-${color} text-customLight` : `text-${color}`}
+      ${center ? "mx-auto" : null}
+      mx-auto
+      block
       border-2
       py-[0.8rem]
       px-[2.6rem]
       border-customPrimary
       rounded-[50rem]
-      w-[150px]/
-      h-[60px]/
       font-medium
       ${className}
     `}
     >
       {text}
+      {icon}
     </button>
   );
 };

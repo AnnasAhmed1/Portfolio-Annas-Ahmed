@@ -11,6 +11,9 @@ import Layout from "@/components/layout";
 import Heading from "@/components/heading";
 import ResumeCard from "@/components/resumeCard";
 import SkillComp from "@/components/skillComp";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import { index } from "cheerio/lib/api/traversing";
+import ProjectFrame from "@/components/projectFrame";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -63,6 +66,30 @@ export default function Home() {
       icon: <LinkedInIcon fontSize="small" />,
       link: "",
     },
+  ];
+  const projects = [
+    {
+      urlId: "1zDAQlCZoezhDFHhIB7h6VHVtyLUc-lAi",
+    },
+    {
+      urlId: "1LgXk0FoVVG52dIReGj67zPvic51NREnD",
+    },
+    {
+      urlId: "1sj0cG2Kds0IGR4E0_C4deuUMM7o-DbL6",
+    },
+    // {
+    //   urlId: "1uh4QVfW0mau7DdESkVz6YT11pL45dv-7",
+    // },
+    // {
+    //   urlId: "1gozu2sdo17THQES5CAvWgB2F1mGd8yMg",
+    // },
+
+    // {
+    //   urlId: "1_G0QBWapdWvNV_5Sy358Q3zB-SfFzOJW",
+    // },
+    // {
+    //   urlId: "1divQzOJKBoiwdrOiJhMiKeww51VZDneF",
+    // },
   ];
   return (
     <>
@@ -206,7 +233,7 @@ export default function Home() {
             </div>
             <div>
               <h1 className="font-[600] text-2xl my-6">My Skills</h1>
-              <div>
+              <div className="grid grid-cols-2 gap-x-12 gap-y-8">
                 {skills?.map((skill, index) => {
                   return (
                     <SkillComp
@@ -217,6 +244,21 @@ export default function Home() {
                   );
                 })}
               </div>
+            </div>
+            <ButtonComp
+              text={`Download CV`}
+              icon={<FileDownloadIcon />}
+              center={true}
+              className="mt-20"
+              transparent={true}
+            />
+          </Layout>
+          <Layout>
+            <Heading text="My Work" subText="PORTFOLIO" />
+            <div className="grid grid-cols-2 gap-8">
+              {projects?.map((video, index) => {
+                return <ProjectFrame video={video} />;
+              })}
             </div>
           </Layout>
         </div>
