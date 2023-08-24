@@ -9,7 +9,7 @@ const Layout = ({
 }) => {
   return (
     <section
-      className={`py-[72px] px-[60px] ${!transparent ? "bg-[#f8f9fa]" : null}`}
+      className={`py-[72px] px-[60px] max-sm:py-[48px] max-sm:px-[28px] ${!transparent ? "bg-[#f8f9fa]" : null}`}
     >
       {children}
     </section>

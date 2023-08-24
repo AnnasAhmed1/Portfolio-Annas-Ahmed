@@ -24,12 +24,14 @@ const ButtonComp = ({
       }
       ${center ? "mx-auto" : null}
       text-base
+      max-md:text-sm
       mx-auto
       block
       transition-all ease-linear duration-[0.5s]
       py-[0.8rem]
       px-[2.6rem]
-      
+      max-md:py-[0.4rem]
+      max-md:px-[1.3rem]
       rounded-[50rem]
       font-medium
       ${className}

@@ -5,7 +5,7 @@ const SkillComp = ({ title = "", percentage = "" }) => {
 
   return (
     <div>
-      <h1 className="mb-2 font-medium w-full flex">
+      <h1 className="mb-2 font-medium max-md:text-sm w-full flex">
         {title}
         <span className="ml-auto block">{percentage}%</span>
       </h1>

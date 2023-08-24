@@ -110,7 +110,7 @@ export default function Home() {
         />
       </Head>
       <main className="flex">
-        <section className="w-[250px] fixed flex flex-col h-screen overflow-hidden justify-between pt-10 pb-6 items-center px-4/ bg-[#111418]">
+        <section className="w-[250px] max-lg:hidden fixed flex flex-col h-screen overflow-hidden justify-between pt-10 pb-6 items-center px-4/ bg-[#111418]">
           <div className="flex justify-center items-center flex-col gap-4 ">
             <Image
               src={require("../assets/profile.png")}
@@ -120,7 +120,7 @@ export default function Home() {
             <h1 className="text-customLight text-2xl">Annas Ahmed</h1>
           </div>
           <nav className="my-10 ">
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col gap-4">  
               {navs.map((nav: string, index: number) => {
                 return (
                   <li
@@ -143,7 +143,7 @@ export default function Home() {
             })}
           </div>
         </section>
-        <div className="w-[calc(100%-250px)] ml-auto">
+        <div className="w-[calc(100%-250px)] max-lg:w-full ml-auto">
           <section
             className={`flex-[8] /
             bg-[url(../assets/home_backgorund.jpeg)]
@@ -153,31 +153,31 @@ export default function Home() {
             h-screen
             `}
           >
-            <div className="bg-[#252729] flex flex-col gap-8 justify-center text-5xl font-bold tracking-wider items-center text-customLight bg-opacity-60 w-full h-screen">
-              <h1 className="text-3xl font-[500]">Welcome</h1>
+            <div className="bg-[#252729] flex flex-col gap-8 max-md:gap-3 justify-center text-5xl max-md:text-4xl max-sm:text-3xl text-center font-bold tracking-wider items-center text-customLight bg-opacity-60 w-full h-screen">
+              <h1 className="text-3xl max-md:text-xl max-sm:text-lg font-[500]">Welcome</h1>
               <Typewriter
                 // component={[ <h1 className="text-5xl font-bold">I&apos;m Annas Ahmed.</h1>]}
                 options={{
-                  strings: ["I'm Annas Ahmed.", "I'm a MERN Stack Developer."],
+                  strings: ["I'm Annas Ahmed", "I'm a MERN Stack Developer"],
                   autoStart: true,
                   loop: true,
                 }}
               />
               {/* <h1 className="">I&apos;m Annas Ahmed.</h1> */}
-              <h1 className="text-2xl font-normal">from Karachi, Pakistan</h1>
+              <h1 className="text-2xl max-md:text-lg max-sm:text-base font-normal">from Karachi, Pakistan</h1>
               <ButtonComp text="Hire Me" transparent={true} />
             </div>
           </section>
           <Layout>
             <Heading text="Know Me More" subText="ABOUT ME" />
-            <div className="flex gap-12">
+            <div className="flex max-md:flex-col max-md:gap-6 max-md:text-[14px] gap-12">
               <div>
-                <h1 className="text-3xl font-[600]">
+                <h1 className="text-3xl max-sm:text-2xl font-[600]">
                   I&apos;m{" "}
                   <span className="text-customPrimary">Simone Olivia,</span> a
                   Web Developer
                 </h1>
-                <p>
+                <p >
                   I help you build brand for your business at an affordable
                   price. Thousands of clients have procured exceptional results
                   while working with our dedicated team. when an unknown printer
@@ -213,9 +213,9 @@ export default function Home() {
           </Layout>
           <Layout transparent={false}>
             <Heading text="Resume" subText="SUMMARY" />
-            <div className="w-full flex gap-12">
+            <div className="w-full flex max-md:flex-col max-md:gap-6 gap-12">
               <div className="flex-1">
-                <h1 className="font-[600] text-2xl mb-6">My Education</h1>
+                <h1 className="font-[600] text-2xl max-md:text-xl mb-6">My Education</h1>
                 {education.map((education, index) => {
                   return (
                     <ResumeCard
@@ -229,7 +229,7 @@ export default function Home() {
                 })}
               </div>
               <div className="flex-1">
-                <h1 className="font-[600] text-2xl mb-6">My Experience</h1>
+                <h1 className="font-[600] text-2xl max-md:text-xl mb-6">My Experience</h1>
                 {experience.map((experience, index) => {
                   return (
                     <ResumeCard
@@ -244,8 +244,8 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <h1 className="font-[600] text-2xl my-6">My Skills</h1>
-              <div className="grid grid-cols-2 gap-x-12 gap-y-8">
+              <h1 className="font-[600] text-2xl max-md:text-xl my-6">My Skills</h1>
+              <div className="grid grid-cols-2 max-md:grid-cols-1 max-md:gap-6 gap-x-12 gap-y-8">
                 {skills?.map((skill, index) => {
                   return (
                     <SkillComp
@@ -267,7 +267,7 @@ export default function Home() {
           </Layout>
           <Layout>
             <Heading text="My Work" subText="PORTFOLIO" />
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 max-md:grid-cols-1 max-md:gap-6  gap-8">
               {projects?.map((video, index) => {
                 return <ProjectFrame key={index} video={video} />;
               })}
@@ -275,7 +275,7 @@ export default function Home() {
           </Layout>
           <Layout transparent={false}>
             <Heading text="Get in Touch" subText="CONTACT" />
-            <div className="flex gap-6">
+            <div className="flex max-md:flex-col-reverse max-md:text-sm max gap-6">
               <div className="flex-1">
                 <h1 className="text-xl font-[600]">ADDRESS</h1>
                 <p>Karachi, Pakistan</p>
@@ -307,13 +307,13 @@ export default function Home() {
               <form className="flex-[3]">
                 <h1 className="text-xl font-[600]">SEND US A NOTE</h1>
                 <input
-                  className="bg-customLight border border-customSemiLight w-[48%]  mb-4 mr-[4%] px-2 py-3 rounded-lg "
+                  className="bg-customLight border border-customSemiLight w-[48%] max-md:w-full max-md:mr-0 mb-4 mr-[4%] px-2 py-3 rounded-lg "
                   placeholder="Name"
                   type="text"
                   required
                 />
                 <input
-                  className="bg-customLight border border-customSemiLight w-[48%] mb-4 px-2 py-3 rounded-lg "
+                  className="bg-customLight border border-customSemiLight w-[48%] max-md:w-full mb-4 px-2 py-3 rounded-lg "
                   placeholder="Email"
                   type="email"
                   required
