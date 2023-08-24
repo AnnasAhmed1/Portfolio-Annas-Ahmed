@@ -261,7 +261,7 @@ export default function Home() {
             <Heading text="My Work" subText="PORTFOLIO" />
             <div className="grid grid-cols-2 gap-8">
               {projects?.map((video, index) => {
-                return <ProjectFrame video={video} />;
+                return <ProjectFrame key={index} video={video} />;
               })}
             </div>
           </Layout>
