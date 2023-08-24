@@ -17,14 +17,19 @@ const ButtonComp = ({
     <button
       onClick={onClick}
       className={`
-      ${!transparent ? `bg-${color} text-customLight` : `text-${color}`}
+      ${
+        !transparent
+          ? `bg-${color} text-customLight  hover:bg-[#1baa80] hover:border-none hover:shadow-2xl `
+          : `text-${color} border-2 border-customPrimary hover:bg-customPrimary  hover:text-customLight`
+      }
       ${center ? "mx-auto" : null}
+      text-base
       mx-auto
       block
-      border-2
+      transition-all ease-linear duration-[0.5s]
       py-[0.8rem]
       px-[2.6rem]
-      border-customPrimary
+      
       rounded-[50rem]
       font-medium
       ${className}

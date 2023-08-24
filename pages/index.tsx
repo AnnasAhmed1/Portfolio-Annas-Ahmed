@@ -14,6 +14,7 @@ import SkillComp from "@/components/skillComp";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import ProjectFrame from "@/components/projectFrame";
 import CallIcon from "@mui/icons-material/Call";
+import Typewriter from "typewriter-effect";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -54,19 +55,19 @@ export default function Home() {
   ];
   const socialLinks = [
     {
-      icon: <WhatsAppIcon fontSize="small" />,
+      icon: <WhatsAppIcon className="hover:text-green-600" fontSize="small" />,
       link: "",
     },
     {
-      icon: <MailIcon fontSize="small" />,
+      icon: <MailIcon className="hover:text-blue-700" fontSize="small" />,
       link: "",
     },
     {
-      icon: <GitHubIcon fontSize="small" />,
+      icon: <GitHubIcon className="hover:text-black" fontSize="small" />,
       link: "",
     },
     {
-      icon: <LinkedInIcon fontSize="small" />,
+      icon: <LinkedInIcon className="hover:text-blue-800" fontSize="small" />,
       link: "",
     },
   ];
@@ -132,7 +133,7 @@ export default function Home() {
               })}
             </ul>
           </nav>
-          <div className="flex   justify-between items-center px-12 text-customSemiLight ">
+          <div className="flex w-full justify-between items-center px-16 text-customSemiLight ">
             {socialLinks.map((social: any, index: number) => {
               return (
                 <p className="text-[8px]" key={index}>
@@ -152,10 +153,18 @@ export default function Home() {
             h-screen
             `}
           >
-            <div className="bg-[#252729] flex flex-col gap-8 justify-center items-center text-customLight bg-opacity-60 w-full h-screen">
+            <div className="bg-[#252729] flex flex-col gap-8 justify-center text-5xl font-bold tracking-wider items-center text-customLight bg-opacity-60 w-full h-screen">
               <h1 className="text-3xl font-[500]">Welcome</h1>
-              <h1 className="text-5xl font-bold">I&apos;m Annas Ahmed.</h1>
-              <h1 className="text-2xl">from Karachi, Pakistan</h1>
+              <Typewriter
+                // component={[ <h1 className="text-5xl font-bold">I&apos;m Annas Ahmed.</h1>]}
+                options={{
+                  strings: ["I'm Annas Ahmed.", "I'm a MERN Stack Developer."],
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+              {/* <h1 className="">I&apos;m Annas Ahmed.</h1> */}
+              <h1 className="text-2xl font-normal">from Karachi, Pakistan</h1>
               <ButtonComp text="Hire Me" transparent={true} />
             </div>
           </section>
@@ -202,7 +211,7 @@ export default function Home() {
               </div>
             </div>
           </Layout>
-          <Layout>
+          <Layout transparent={false}>
             <Heading text="Resume" subText="SUMMARY" />
             <div className="w-full flex gap-12">
               <div className="flex-1">
@@ -264,13 +273,13 @@ export default function Home() {
               })}
             </div>
           </Layout>
-          <Layout>
+          <Layout transparent={false}>
             <Heading text="Get in Touch" subText="CONTACT" />
             <div className="flex gap-6">
               <div className="flex-1">
                 <h1 className="text-xl font-[600]">ADDRESS</h1>
                 <p>Karachi, Pakistan</p>
-                <div className="flex flex-col gap-3 my-6">
+                <div className="flex flex-col gap-3 my-8">
                   <p className="flex items-center gap-1 m-0">
                     <CallIcon className="text-customPrimary" />
                     +92 332 6556262
@@ -298,23 +307,31 @@ export default function Home() {
               <form className="flex-[3]">
                 <h1 className="text-xl font-[600]">SEND US A NOTE</h1>
                 <input
-                  className="bg-customLight border border-customSemiLight w-[45%]  mb-6 mr-[5%] p-2 rounded-lg "
-                  placeholder="name"
+                  className="bg-customLight border border-customSemiLight w-[48%]  mb-4 mr-[4%] px-2 py-3 rounded-lg "
+                  placeholder="Name"
                   type="text"
+                  required
                 />
                 <input
-                  className="bg-customLight border border-customSemiLight w-[45%] mb-6 p-2 rounded-lg "
-                  placeholder="name"
+                  className="bg-customLight border border-customSemiLight w-[48%] mb-4 px-2 py-3 rounded-lg "
+                  placeholder="Email"
                   type="email"
+                  required
                 />
                 <textarea
-                  className="bg-customLight border border-customSemiLight w-full p-2 rounded-lg "
-                  placeholder="name"
+                  className="bg-customLight border border-customSemiLight w-full px-2 py-3 rounded-lg resize-none "
+                  placeholder="Leave your comment"
                   name=""
                   id=""
-                  cols={30}
-                  rows={10}
+                  // cols={30}
+                  rows={4}
+                  required
                 ></textarea>
+                <ButtonComp
+                  text="Send Message"
+                  center={true}
+                  className="mt-6"
+                />
               </form>
             </div>
           </Layout>
