@@ -12,7 +12,6 @@ import Heading from "@/components/heading";
 import ResumeCard from "@/components/resumeCard";
 import SkillComp from "@/components/skillComp";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
-import { index } from "cheerio/lib/api/traversing";
 import ProjectFrame from "@/components/projectFrame";
 import CallIcon from "@mui/icons-material/Call";
 
