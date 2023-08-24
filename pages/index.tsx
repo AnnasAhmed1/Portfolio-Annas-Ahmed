@@ -14,6 +14,7 @@ import SkillComp from "@/components/skillComp";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import { index } from "cheerio/lib/api/traversing";
 import ProjectFrame from "@/components/projectFrame";
+import CallIcon from "@mui/icons-material/Call";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -44,10 +45,13 @@ export default function Home() {
   const skills = [
     { title: "React Js", percentage: 80 },
     { title: "Next Js", percentage: 70 },
-    { title: "HTML/CSS", percentage: 95 },
+    // { title: "Next Js", percentage: 70 },
     { title: "JavaScript", percentage: 80 },
     { title: "Python", percentage: 75 },
+    { title: "MongoDB", percentage: 65 },
+    { title: "Firebase", percentage: 65 },
     { title: "Node Js/Express Js", percentage: 50 },
+    { title: "HTML/CSS", percentage: 95 },
   ];
   const socialLinks = [
     {
@@ -259,6 +263,60 @@ export default function Home() {
               {projects?.map((video, index) => {
                 return <ProjectFrame video={video} />;
               })}
+            </div>
+          </Layout>
+          <Layout>
+            <Heading text="Get in Touch" subText="CONTACT" />
+            <div className="flex gap-6">
+              <div className="flex-1">
+                <h1 className="text-xl font-[600]">ADDRESS</h1>
+                <p>Karachi, Pakistan</p>
+                <div className="flex flex-col gap-3 my-6">
+                  <p className="flex items-center gap-1 m-0">
+                    <CallIcon className="text-customPrimary" />
+                    +92 332 6556262
+                  </p>
+                  <p className="flex items-center gap-1 m-0">
+                    <WhatsAppIcon className="text-customPrimary" />
+                    +92 332 6556262
+                  </p>
+                  <p className="flex items-center gap-1 m-0">
+                    <MailIcon className="text-customPrimary" />
+                    annasahmed1609@gmail.com
+                  </p>
+                </div>
+                <h1 className="text-xl font-[600]">CONNECT WITH ME</h1>
+                <p className="flex items-center gap-6">
+                  {socialLinks.map((social: any, index: number) => {
+                    return (
+                      <p className="text-[16px]/" key={index}>
+                        {social.icon}
+                      </p>
+                    );
+                  })}
+                </p>
+              </div>
+              <form className="flex-[3]">
+                <h1 className="text-xl font-[600]">SEND US A NOTE</h1>
+                <input
+                  className="bg-customLight border border-customSemiLight w-[45%]  mb-6 mr-[5%] p-2 rounded-lg "
+                  placeholder="name"
+                  type="text"
+                />
+                <input
+                  className="bg-customLight border border-customSemiLight w-[45%] mb-6 p-2 rounded-lg "
+                  placeholder="name"
+                  type="email"
+                />
+                <textarea
+                  className="bg-customLight border border-customSemiLight w-full p-2 rounded-lg "
+                  placeholder="name"
+                  name=""
+                  id=""
+                  cols={30}
+                  rows={10}
+                ></textarea>
+              </form>
             </div>
           </Layout>
         </div>
