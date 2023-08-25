@@ -1,8 +1,6 @@
 import React from "react";
 
 const SkillComp = ({ title = "", percentage = "" }) => {
-  console.log(typeof percentage);
-
   return (
     <div>
       <h1 className="mb-2 font-medium max-md:text-sm w-full flex">

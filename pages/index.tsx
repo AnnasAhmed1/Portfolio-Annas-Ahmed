@@ -15,6 +15,7 @@ import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import ProjectFrame from "@/components/projectFrame";
 import CallIcon from "@mui/icons-material/Call";
 import Typewriter from "typewriter-effect";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -120,7 +121,7 @@ export default function Home() {
             <h1 className="text-customLight text-2xl">Annas Ahmed</h1>
           </div>
           <nav className="my-10 ">
-            <ul className="flex flex-col gap-4">  
+            <ul className="flex flex-col gap-4">
               {navs.map((nav: string, index: number) => {
                 return (
                   <li
@@ -136,14 +137,34 @@ export default function Home() {
           <div className="flex w-full justify-between items-center px-16 text-customSemiLight ">
             {socialLinks.map((social: any, index: number) => {
               return (
-                <p className="text-[8px]" key={index}>
+                <p className="text-[8px] cursor-pointer" key={index}>
                   {social.icon}
                 </p>
               );
             })}
           </div>
         </section>
+
         <div className="w-[calc(100%-250px)] max-lg:w-full ml-auto">
+          <nav className="hidden w-full z-[999] max-lg:flex items-center bg-[#111418] px-[20px] fixed max-sm:px-[10px]">
+            <h1 className="text-customLight font-[500] flex-1 py-4 text-2xl max-md:text-lg m-0">
+              Annas Ahmed
+            </h1>
+
+            <div className="flex. w-full/ justify-between/ items-center/ px-16/ text-customSemiLight ">
+              {socialLinks.map((social: any, index: number) => {
+                return (
+                  <p
+                    className="text-[8px]/ inline mr-4 max-sm:mr-2 cursor-pointer"
+                    key={index}
+                  >
+                    {social.icon}
+                  </p>
+                );
+              })}
+            </div>
+            <MenuIcon className="text-white cursor-pointer" />
+          </nav>
           <section
             className={`flex-[8] /
             bg-[url(../assets/home_backgorund.jpeg)]
@@ -154,7 +175,9 @@ export default function Home() {
             `}
           >
             <div className="bg-[#252729] flex flex-col gap-8 max-md:gap-3 justify-center text-5xl max-md:text-4xl max-sm:text-3xl text-center font-bold tracking-wider items-center text-customLight bg-opacity-60 w-full h-screen">
-              <h1 className="text-3xl max-md:text-xl max-sm:text-lg font-[500]">Welcome</h1>
+              <h1 className="text-3xl max-md:text-xl max-sm:text-lg font-[500]">
+                Welcome
+              </h1>
               <Typewriter
                 // component={[ <h1 className="text-5xl font-bold">I&apos;m Annas Ahmed.</h1>]}
                 options={{
@@ -164,7 +187,9 @@ export default function Home() {
                 }}
               />
               {/* <h1 className="">I&apos;m Annas Ahmed.</h1> */}
-              <h1 className="text-2xl max-md:text-lg max-sm:text-base font-normal">from Karachi, Pakistan</h1>
+              <h1 className="text-2xl max-md:text-lg max-sm:text-base font-normal">
+                from Karachi, Pakistan
+              </h1>
               <ButtonComp text="Hire Me" transparent={true} />
             </div>
           </section>
@@ -177,7 +202,7 @@ export default function Home() {
                   <span className="text-customPrimary">Simone Olivia,</span> a
                   Web Developer
                 </h1>
-                <p >
+                <p>
                   I help you build brand for your business at an affordable
                   price. Thousands of clients have procured exceptional results
                   while working with our dedicated team. when an unknown printer
@@ -215,7 +240,9 @@ export default function Home() {
             <Heading text="Resume" subText="SUMMARY" />
             <div className="w-full flex max-md:flex-col max-md:gap-6 gap-12">
               <div className="flex-1">
-                <h1 className="font-[600] text-2xl max-md:text-xl mb-6">My Education</h1>
+                <h1 className="font-[600] text-2xl max-md:text-xl mb-6">
+                  My Education
+                </h1>
                 {education.map((education, index) => {
                   return (
                     <ResumeCard
@@ -229,7 +256,9 @@ export default function Home() {
                 })}
               </div>
               <div className="flex-1">
-                <h1 className="font-[600] text-2xl max-md:text-xl mb-6">My Experience</h1>
+                <h1 className="font-[600] text-2xl max-md:text-xl mb-6">
+                  My Experience
+                </h1>
                 {experience.map((experience, index) => {
                   return (
                     <ResumeCard
@@ -244,7 +273,9 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <h1 className="font-[600] text-2xl max-md:text-xl my-6">My Skills</h1>
+              <h1 className="font-[600] text-2xl max-md:text-xl my-6">
+                My Skills
+              </h1>
               <div className="grid grid-cols-2 max-md:grid-cols-1 max-md:gap-6 gap-x-12 gap-y-8">
                 {skills?.map((skill, index) => {
                   return (
