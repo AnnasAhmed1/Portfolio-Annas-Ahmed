@@ -16,11 +16,18 @@ import ProjectFrame from "@/components/projectFrame";
 import CallIcon from "@mui/icons-material/Call";
 import Typewriter from "typewriter-effect";
 import MenuIcon from "@mui/icons-material/Menu";
+import ClearIcon from "@mui/icons-material/Clear";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState();
   const navs = ["Home", "About Me", "Resume", "Portfolio", "Contact"];
+  const phoneNumber = "03326556262";
+  const email = "annasahmed1609@gmail.com";
+  const linkedin = "annas-ahmed-3a2846207";
+  const github = "AnnasAhmed1";
   const details = [
     { Name: "Annas Ahmed" },
     { Email: "annasahmed1609@gmail.com" },
@@ -57,19 +64,20 @@ export default function Home() {
   const socialLinks = [
     {
       icon: <WhatsAppIcon className="hover:text-green-600" fontSize="small" />,
-      link: "",
+      link: `https://api.whatsapp.com/send?phone=${phoneNumber}`,
     },
     {
       icon: <MailIcon className="hover:text-blue-700" fontSize="small" />,
-      link: "",
+      link: `mailto:${email}`,
+      email: true,
     },
     {
       icon: <GitHubIcon className="hover:text-black" fontSize="small" />,
-      link: "",
+      link: `https://github.com/${github}`,
     },
     {
       icon: <LinkedInIcon className="hover:text-blue-800" fontSize="small" />,
-      link: "",
+      link: `https://www.linkedin.com/in/${linkedin}`,
     },
   ];
   const projects = [
@@ -81,6 +89,9 @@ export default function Home() {
     },
     {
       urlId: "1sj0cG2Kds0IGR4E0_C4deuUMM7o-DbL6",
+    },
+    {
+      urlId: "1BVlYD1TPSisTy_WOBV0bvwvbC8qX8qRg",
     },
     // {
     //   urlId: "1uh4QVfW0mau7DdESkVz6YT11pL45dv-7",
@@ -96,6 +107,24 @@ export default function Home() {
     //   urlId: "1divQzOJKBoiwdrOiJhMiKeww51VZDneF",
     // },
   ];
+  const [navOpen, setNavOpen] = useState(false);
+  const handleSocialLinks = (link: string, email = false) => {
+    !email ? window.open(link, "_blank") : (window.location.href = link);
+  };
+  const handleDownloadCV = () => {
+    console.log("download");
+    // Replace 'YourName_Resume.pdf' with the actual name of your CV file
+    // const downloadLink = "/Annas_Ahmed_resume.pdf";
+    // window.open(downloadLink, "_blank");
+    // <a href="/Annas_Ahmed_resume.pdf" download="Annas_Ahmed_resume.pdf">
+    //   Download CV
+    // </a>;
+    const downloadLink = "/Annas_Ahmed_resume.pdf";
+    const a = document.createElement("a");
+    a.href = downloadLink;
+    a.download = "Annas_Ahmed_resume.pdf";
+    a.click();
+  };
   return (
     <>
       <Head>
@@ -137,7 +166,13 @@ export default function Home() {
           <div className="flex w-full justify-between items-center px-16 text-customSemiLight ">
             {socialLinks.map((social: any, index: number) => {
               return (
-                <p className="text-[8px] cursor-pointer" key={index}>
+                <p
+                  className="text-[8px] cursor-pointer"
+                  key={index}
+                  onClick={() => {
+                    handleSocialLinks(social.link, social.email);
+                  }}
+                >
                   {social.icon}
                 </p>
               );
@@ -145,27 +180,64 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="w-[calc(100%-250px)] max-lg:w-full ml-auto">
-          <nav className="hidden w-full z-[999] max-lg:flex items-center bg-[#111418] px-[20px] fixed max-sm:px-[10px]">
-            <h1 className="text-customLight font-[500] flex-1 py-4 text-2xl max-md:text-lg m-0">
-              Annas Ahmed
-            </h1>
+        <div className="w-[calc(100%-250px)] max-lg:w-full ml-auto ">
+          <nav className="hidden w-full z-[999]  max-lg:block bg-[#111418] py-4 px-[20px] fixed max-sm:px-[10px]">
+            <div className="flex items-center">
+              <h1 className="text-customLight font-[500] flex-1  text-2xl max-md:text-lg m-0">
+                Annas Ahmed
+              </h1>
 
-            <div className="flex. w-full/ justify-between/ items-center/ px-16/ text-customSemiLight ">
-              {socialLinks.map((social: any, index: number) => {
+              <div className="flex. w-full/ justify-between/ items-center/ px-16/ text-customSemiLight ">
+                {socialLinks.map((social: any, index: number) => {
+                  return (
+                    <p
+                      className="text-[8px]/ inline mr-4 max-sm:mr-2 cursor-pointer"
+                      key={index}
+                      onClick={() => {
+                        handleSocialLinks(social.link, social.email);
+                      }}
+                    >
+                      {social.icon}
+                    </p>
+                  );
+                })}
+              </div>
+              <button
+                onClick={() => {
+                  setNavOpen(!navOpen);
+                }}
+                className="transition-all ease-linear duration-[0.5s]"
+              >
+                {!navOpen ? (
+                  <MenuIcon className="text-white cursor-pointer transition-all ease-linear duration-[0.5s]" />
+                ) : (
+                  <ClearIcon className="text-white cursor-pointer transition-all ease-linear duration-[0.5s]" />
+                )}
+              </button>
+            </div>
+            <ul
+              className={`${
+                !navOpen ? "hidden" : "flex"
+              } flex-col gap-1/ mt-10 mb-4 transition-all ease-linear duration-[0.5s] `}
+            >
+              {navs.map((nav: string, index: number) => {
                 return (
-                  <p
-                    className="text-[8px]/ inline mr-4 max-sm:mr-2 cursor-pointer"
+                  <li
+                    className={` cursor-pointer text-customSemiLight text-base py-3 ${
+                      index !== navs.length - 1 || true
+                        ? "border-b border-[#555555]"
+                        : null
+                    } text-center/ hover:text-customPrimary`}
                     key={index}
                   >
-                    {social.icon}
-                  </p>
+                    {nav}
+                  </li>
                 );
               })}
-            </div>
-            <MenuIcon className="text-white cursor-pointer" />
+            </ul>
           </nav>
           <section
+            id="welcomeSection"
             className={`flex-[8] /
             bg-[url(../assets/home_backgorund.jpeg)]
             bg-cover
@@ -199,21 +271,28 @@ export default function Home() {
               <div>
                 <h1 className="text-3xl max-sm:text-2xl font-[600]">
                   I&apos;m{" "}
-                  <span className="text-customPrimary">Simone Olivia,</span> a
-                  Web Developer
+                  <span className="text-customPrimary">Annas Ahmed,</span> a
+                  MERN Stack Developer
                 </h1>
                 <p>
-                  I help you build brand for your business at an affordable
-                  price. Thousands of clients have procured exceptional results
-                  while working with our dedicated team. when an unknown printer
-                  took a galley of type and scrambled it to make a type specimen
-                  book.
+                  A passionate MERN stack developer with a year of freelancing
+                  experience specializing in React.js and Next.js. I have a
+                  profound love for crafting efficient, user-friendly, and
+                  visually appealing web applications. With a solid foundation
+                  in modern web development technologies, I&apos;m dedicated to
+                  transforming ideas into functional, responsive, and engaging
+                  digital experiences.
                 </p>
                 <p>
-                  Delivering work within time and budget which meets
-                  client&apos;s requirements is our moto. Lorem Ipsum has been
-                  the industrys standard dummy text ever when an unknown printer
-                  took a galley.
+                  Having delved into the world of web development, I&apos;ve not
+                  only acquired technical skills but also developed a keen eye
+                  for detail and a problem-solving mindset. My journey began
+                  with a deep fascination for creating interactive front-end
+                  designs that seamlessly integrate with powerful back-end
+                  functionalities. This drive has led me to explore and master
+                  the React.js and Next.js frameworks, which enable me to build
+                  cutting-edge web applications that provide an exceptional user
+                  experience.
                 </p>
               </div>
               <div>
@@ -232,7 +311,13 @@ export default function Home() {
                     </li>
                   );
                 })}
-                <ButtonComp text="Download CV" className="mt-3" />
+                <ButtonComp
+                  text="Download CV"
+                  className="mt-3"
+                  onClick={() => {
+                    handleDownloadCV();
+                  }}
+                />
               </div>
             </div>
           </Layout>
@@ -291,6 +376,9 @@ export default function Home() {
             <ButtonComp
               text={`Download CV`}
               icon={<FileDownloadIcon />}
+              onClick={() => {
+                handleDownloadCV();
+              }}
               center={true}
               className="mt-20"
               transparent={true}
@@ -325,15 +413,21 @@ export default function Home() {
                   </p>
                 </div>
                 <h1 className="text-xl font-[600]">CONNECT WITH ME</h1>
-                <p className="flex items-center gap-6">
+                <div className="flex items-center gap-6">
                   {socialLinks.map((social: any, index: number) => {
                     return (
-                      <p className="text-[16px]/" key={index}>
+                      <p
+                        className="text-[16px]/"
+                        key={index}
+                        onClick={() => {
+                          handleSocialLinks(social.link, social.email);
+                        }}
+                      >
                         {social.icon}
                       </p>
                     );
                   })}
-                </p>
+                </div>
               </div>
               <form className="flex-[3]">
                 <h1 className="text-xl font-[600]">SEND US A NOTE</h1>
