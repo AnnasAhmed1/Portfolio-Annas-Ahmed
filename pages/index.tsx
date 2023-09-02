@@ -1,25 +1,33 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import MailIcon from "@mui/icons-material/Mail";
-import ButtonComp from "@/components/buttonComp";
+import { useState } from "react";
+import Typewriter from "typewriter-effect";
+
+// components
 import Layout from "@/components/layout";
 import Heading from "@/components/heading";
 import ResumeCard from "@/components/resumeCard";
 import SkillComp from "@/components/skillComp";
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import ProjectFrame from "@/components/projectFrame";
+import ProjectCard from "@/components/projectCard";
+
+// images
+import kardinal from "../assets/projects/kardinal_project.png";
+import afilename from "../assets/projects/afilename_project.png";
+import appswaves from "../assets/projects/appswaves_project.png";
+import fizz from "../assets/projects/fizz_project.png";
+import car from "../assets/projects/car_flutter_app.png";
+
+// icons
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import ButtonComp from "@/components/buttonComp";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import MailIcon from "@mui/icons-material/Mail";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import CallIcon from "@mui/icons-material/Call";
-import Typewriter from "typewriter-effect";
 import MenuIcon from "@mui/icons-material/Menu";
 import ClearIcon from "@mui/icons-material/Clear";
-import { useState } from "react";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState();
@@ -82,30 +90,25 @@ export default function Home() {
   ];
   const projects = [
     {
-      urlId: "1zDAQlCZoezhDFHhIB7h6VHVtyLUc-lAi",
+      image: fizz,
+      liveLink: "https://fizzinnovations-portfolio.vercel.app/",
+      githubLink: "Fizzinnovations_portfolio",
     },
     {
-      urlId: "1LgXk0FoVVG52dIReGj67zPvic51NREnD",
+      image: appswaves,
+      liveLink: "https://appswaves-3a882.web.app/",
+      githubLink: "Appswaves_project",
     },
     {
-      urlId: "1sj0cG2Kds0IGR4E0_C4deuUMM7o-DbL6",
+      image: kardinal,
+      liveLink: "https://kardinal-react-siraj.web.app/",
+      githubLink: "Appswaves_project",
     },
     {
-      urlId: "1BVlYD1TPSisTy_WOBV0bvwvbC8qX8qRg",
+      image: afilename,
+      liveLink: "https://afile-name-siraj.vercel.app/",
+      githubLink: "AfileName-Siraj",
     },
-    // {
-    //   urlId: "1uh4QVfW0mau7DdESkVz6YT11pL45dv-7",
-    // },
-    // {
-    //   urlId: "1gozu2sdo17THQES5CAvWgB2F1mGd8yMg",
-    // },
-
-    // {
-    //   urlId: "1_G0QBWapdWvNV_5Sy358Q3zB-SfFzOJW",
-    // },
-    // {
-    //   urlId: "1divQzOJKBoiwdrOiJhMiKeww51VZDneF",
-    // },
   ];
   const [navOpen, setNavOpen] = useState(false);
   const handleSocialLinks = (link: string, email = false) => {
@@ -387,8 +390,15 @@ export default function Home() {
           <Layout>
             <Heading text="My Work" subText="PORTFOLIO" />
             <div className="grid grid-cols-2 max-md:grid-cols-1 max-md:gap-6  gap-8">
-              {projects?.map((video, index) => {
-                return <ProjectFrame key={index} video={video} />;
+              {projects?.map((project, index) => {
+                return (
+                  <ProjectCard
+                    key={index}
+                    image={project.image}
+                    liveLink={project.liveLink}
+                    githubLink={project.githubLink}
+                  />
+                );
               })}
             </div>
           </Layout>

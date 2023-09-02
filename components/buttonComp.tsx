@@ -26,7 +26,11 @@ const ButtonComp = ({
       text-base
       max-md:text-sm
       mx-auto
-      block
+      flex
+      justify-center
+      items-center
+      gap-1
+      hover:gap-2
       transition-all ease-linear duration-[0.5s]
       py-[0.8rem]
       px-[2.6rem]
@@ -34,6 +38,7 @@ const ButtonComp = ({
       max-md:px-[1.3rem]
       rounded-[50rem]
       font-medium
+      
       ${className}
     `}
     >
