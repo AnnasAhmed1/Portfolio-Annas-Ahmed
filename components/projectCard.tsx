@@ -30,7 +30,7 @@ const ProjectCard = ({
       origin-top-left scale-y-0 group-hover:scale-100 group-hover:origin-top-left
       `}
       >
-        <Link className="" href={`${liveLink}`}>
+        <Link className="" href={`${liveLink}`} target="_blank">
           <ButtonComp text="Preview" icon={<EastIcon className="text-lg" />} />
         </Link>
         <Link
