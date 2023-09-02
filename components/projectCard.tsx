@@ -36,6 +36,7 @@ const ProjectCard = ({
         <Link
           className=""
           href={`https://github.com/AnnasAhmed1/${githubLink}`}
+          target="_blank"
         >
           <ButtonComp text="Github" icon={<EastIcon className="text-lg" />} />
         </Link>
