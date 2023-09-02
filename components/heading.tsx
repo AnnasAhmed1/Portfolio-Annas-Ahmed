@@ -9,6 +9,7 @@ const Heading = ({ text = "", subText = "", className = "" }) => {
       <p
         className={`text-customSemiDark absolute text-4xl max-md:text-3xl max-sm:text-2xl font-bold ${className}`}
       >
+        <span className="absolute w-[40%] block mx-auto h-1 bg-customPrimary bottom-[-10px] left-0 right-0"></span>
         {text}
       </p>
     </div>
