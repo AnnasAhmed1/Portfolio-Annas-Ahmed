@@ -26,18 +26,12 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import MailIcon from "@mui/icons-material/Mail";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import CallIcon from "@mui/icons-material/Call";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 import Navbar from "@/components/navbar";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
-  // const sections = [
-  //   { id: "home" },
-  //   { id: "about" },
-  //   { id: "resume" },
-  //   { id: "portfolio" },
-  //   { id: "contact" },
-  // ];
   const navs = [
     { title: "Home", id: "home", active: false },
     { title: "About Me", id: "about", active: false },
@@ -137,8 +131,6 @@ export default function Home() {
     a.click();
   };
 
-  const [currentSection, setCurrentSection] = useState("");
-
   const updateCurrentSection = () => {
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
@@ -183,8 +175,6 @@ export default function Home() {
     };
   }, []);
 
-  // console.log(currentSection);
-
   return (
     <>
       <Head>
@@ -226,8 +216,17 @@ export default function Home() {
             bg-no-repeat
             w-full
             h-screen
+            relative
             `}
           >
+            <button
+              className="absolute bottom-1 left-0 right-0 text-customLight mx-auto animate-bounce"
+              onClick={(e) => {
+                scrollToSection(e, "about");
+              }}
+            >
+              <KeyboardArrowDownIcon className="text-7xl" />
+            </button>
             <div className="bg-[#252729] flex flex-col gap-8 max-md:gap-3 justify-center text-5xl max-md:text-4xl max-sm:text-3xl text-center font-bold tracking-wider items-center text-customLight bg-opacity-60 w-full h-screen">
               <h1 className="text-3xl max-md:text-xl max-sm:text-lg font-[500]">
                 Welcome
