@@ -225,7 +225,12 @@ export default function Home() {
                 scrollToSection(e, "about");
               }}
             >
-              <KeyboardArrowDownIcon className="text-7xl" />
+              <KeyboardArrowDownIcon
+                style={{
+                  fontSize: "4rem",
+                  color: "#fff",
+                }}
+              />
             </button>
             <div className="bg-[#252729] flex flex-col gap-8 max-md:gap-3 justify-center text-5xl max-md:text-4xl max-sm:text-3xl text-center font-bold tracking-wider items-center text-customLight bg-opacity-60 w-full h-screen">
               <h1 className="text-3xl max-md:text-xl max-sm:text-lg font-[500]">
