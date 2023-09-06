@@ -2,21 +2,22 @@ import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // components
 import Layout from "@/components/layout";
 import Heading from "@/components/heading";
 import ResumeCard from "@/components/resumeCard";
 import SkillComp from "@/components/skillComp";
-import ProjectFrame from "@/components/projectFrame";
 import ProjectCard from "@/components/projectCard";
+import Navbar from "@/components/navbar";
 
 // images
 import kardinal from "../assets/projects/kardinal_project.png";
 import afilename from "../assets/projects/afilename_project.png";
 import appswaves from "../assets/projects/appswaves_project.png";
 import fizz from "../assets/projects/fizz_project.png";
-import car from "../assets/projects/car_flutter_app.png";
 
 // icons
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -27,8 +28,6 @@ import MailIcon from "@mui/icons-material/Mail";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import CallIcon from "@mui/icons-material/Call";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-
-import Navbar from "@/components/navbar";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
@@ -167,7 +166,9 @@ export default function Home() {
       });
     }
   }
-
+  const [inputName, setInputName] = useState("");
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputComment, setInputComment] = useState("");
   useEffect(() => {
     window.addEventListener("scroll", updateCurrentSection);
     return () => {
@@ -190,6 +191,7 @@ export default function Home() {
         />
       </Head>
       <main className="flex">
+        <ToastContainer />
         <Navbar
           navs={navs}
           socialLinks={socialLinks}
@@ -248,7 +250,13 @@ export default function Home() {
               <h1 className="text-2xl max-md:text-lg max-sm:text-base font-normal">
                 from Karachi, Pakistan
               </h1>
-              <ButtonComp text="Hire Me" transparent={true} />
+              <ButtonComp
+                text="Hire Me"
+                transparent={true}
+                onClick={(e) => {
+                  scrollToSection(e, "contact");
+                }}
+              />
             </div>
           </section>
           <Layout id="about">
@@ -422,19 +430,36 @@ export default function Home() {
                   })}
                 </div>
               </div>
-              <form className="flex-[3]">
+              <form
+                className="flex-[3]"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  toast.success("Thanks for your response");
+                  setInputName("");
+                  setInputEmail("");
+                  setInputComment("");
+                }}
+              >
                 <h1 className="text-xl font-[600]">SEND US A NOTE</h1>
                 <input
                   className="focus:outline-customPrimary bg-customLight border border-customSemiLight w-[48%] max-md:w-full max-md:mr-0 mb-4 mr-[4%] px-2 py-3 rounded-lg "
                   placeholder="Name"
                   type="text"
                   required
+                  value={inputName}
+                  onChange={(e) => {
+                    setInputName(e.target.value);
+                  }}
                 />
                 <input
                   className="focus:outline-customPrimary bg-customLight border border-customSemiLight w-[48%] max-md:w-full mb-4 px-2 py-3 rounded-lg "
                   placeholder="Email"
                   type="email"
                   required
+                  value={inputEmail}
+                  onChange={(e) => {
+                    setInputEmail(e.target.value);
+                  }}
                 />
                 <textarea
                   className="focus:outline-customPrimary bg-customLight border border-customSemiLight w-full px-2 py-3 rounded-lg resize-none "
@@ -444,6 +469,10 @@ export default function Home() {
                   // cols={30}
                   rows={4}
                   required
+                  value={inputComment}
+                  onChange={(e) => {
+                    setInputComment(e.target.value);
+                  }}
                 ></textarea>
                 <ButtonComp
                   text="Send Message"

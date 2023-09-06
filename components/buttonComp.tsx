@@ -10,7 +10,7 @@ const ButtonComp = ({
   center = false,
   color = "customPrimary",
   icon = <div />,
-  onClick = () => {},
+  onClick = (e?: any) => {},
   className = "",
 }) => {
   return (
