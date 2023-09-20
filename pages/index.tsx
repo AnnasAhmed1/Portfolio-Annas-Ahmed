@@ -50,7 +50,7 @@ export default function Home() {
   ];
   const education = [
     {
-      year: "2021-2025",
+      year: "2021-present",
       title: "BSCS",
       institue: "University Of Karachi",
       details: "Currently pursuing third year",
@@ -289,7 +289,7 @@ export default function Home() {
                   experience.
                 </p>
               </div>
-              <div>
+              {/* <div>
                 {details.map((detail, index) => {
                   return (
                     <li
@@ -312,7 +312,7 @@ export default function Home() {
                     handleDownloadCV();
                   }}
                 />
-              </div>
+              </div> */}
             </div>
           </Layout>
           <Layout id="resume" transparent={false}>
